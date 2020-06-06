@@ -6,7 +6,8 @@
   "scripts": {
     "ts": "tsc --watch",
     "start": "node ./dist/server.js PORT=3000",
-    "dev": "nodemon ./dist/server.js PORT=3000"
+    "dev": "nodemon ./dist/server.js PORT=3000",
+    "update-migrations": "typeorm migration:run"
   },
   "devDependencies": {
     "@types/koa": "^2.11.3",
@@ -23,6 +24,10 @@
     "typescript": "^3.9.5"
   },
   "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "@types/bcrypt": "^3.0.0",
+    "@types/hapi__joi": "^17.1.2",
+    "bcrypt": "^4.0.1",
     "koa": "^2.12.0",
     "mysql": "^2.18.1",
     "pg": "^8.2.1",

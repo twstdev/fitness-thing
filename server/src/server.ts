@@ -21,9 +21,6 @@ createConnection(options).then(async connection => {
   const app = new Koa();
   const port = process.env['PORT'] || 3000;
 
-  const tables = await User.find();
-  console.log(tables);
-
   app.context['connection'] = connection;
 
   app.use(json());
