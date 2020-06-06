@@ -39,11 +39,11 @@ export class User extends BaseEntity {
   })
       .with('password', 'confirmedPassword');
 
-  static validateSchema = (
+  static validateSchema = async (
       user: Partial<User> & {
         confirmedPassword: string
       }
-  ): ValidationResult => {
+  ): Promise<ValidationResult> => {
     return User.schema.validate(user);
   }
 

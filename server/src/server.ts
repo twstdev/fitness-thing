@@ -1,6 +1,9 @@
 import Koa from 'koa';
 import logger from 'koa-logger';
 import json from 'koa-json';
+import body from 'koa-body';
+import session from 'koa-session';
+import passport from 'koa-passport';
 
 import "reflect-metadata";
 import { ConnectionOptions, createConnection } from "typeorm";
@@ -23,8 +26,14 @@ createConnection(options).then(async connection => {
 
   app.context['connection'] = connection;
 
+  app.keys = ['WQ2kZ8EyGY7RzCutN6iKQT*cip_sc-!LZL@Bg8!TuoauEaF!m@']
+
+  app.use(body());
   app.use(json());
   app.use(logger());
+  app.use(session({}, app));
+  app.use(passport.initialize());
+  app.use(passport.session());
 
   app.use(UserRouter.routes()).use(UserRouter.allowedMethods());
 
